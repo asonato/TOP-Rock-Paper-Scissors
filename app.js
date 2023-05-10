@@ -1,54 +1,66 @@
 const possibleChoice = ["rock", "paper", "scissors"];
+const output = document.querySelector(".output");
+let playerScore = 0;
+let compScore = 0;
+const score = document.querySelector(".score");
 
-function getComputerChoice() {
-  return possibleChoice[Math.floor(Math.random() * possibleChoice.length)];
-}
-
-function playRound(playerSelection, computerSelection) {
-  if (!possibleChoice.includes(playerSelection)) {
-    return "Wrong choice";
+function playRound() {
+  if (playerScore === 5) {
+    output.textContent = "Player Wins!";
+    return;
+  } else if (compScore === 5) {
+    output.textContent = "Computer Wins!";
+    return;
   }
+  playerSelection = this.dataset.id;
+  const computerSelection =
+    possibleChoice[Math.floor(Math.random() * possibleChoice.length)];
+  console.log(playerSelection);
+
   if (playerSelection === computerSelection) {
-    return "Draw!";
+    output.textContent = `DRAW`;
   } else if (playerSelection === "rock") {
     if (computerSelection === "scissors") {
-      return "You win!";
+      playerScore++;
+      score.textContent = `Score: ${playerScore} - ${compScore}`;
+      output.textContent = `WIN`;
     } else {
-      return "You lost";
+      compScore++;
+      score.textContent = `Score: ${playerScore} - ${compScore}`;
+      output.textContent = `LOSE`;
     }
   } else if (playerSelection === "paper") {
     if (computerSelection === "rock") {
-      return "You win!";
+      playerScore++;
+      score.textContent = `Score: ${playerScore} - ${compScore}`;
+      output.textContent = `WIN`;
     } else {
-      return "You lost";
+      compScore++;
+      score.textContent = `Score: ${playerScore} - ${compScore}`;
+      output.textContent = `LOSE`;
     }
   } else if (playerSelection === "scissors") {
     if (computerSelection === "paper") {
-      return "You win!";
+      playerScore++;
+      score.textContent = `Score: ${playerScore} - ${compScore}`;
+      output.textContent = `WIN`;
     } else {
-      return "You lost";
+      compScore++;
+      score.textContent = `Score: ${playerScore} - ${compScore}`;
+      output.textContent = `LOSE`;
     }
+  }
+  if (playerScore === 5) {
+    output.textContent = "Player Wins!";
+  } else if (compScore === 5) {
+    output.textContent = "Computer Wins!";
   }
 }
 
-function game() {
-  let playerScore = 0;
-  let computerScore = 0;
-  for (let i = 0; i < 5; i++) {
-    playerSelection = prompt("Choose your weapon").toLowerCase();
-    computerSelection = getComputerChoice();
-    let result = playRound(playerSelection, computerSelection);
-    console.log(result);
-    if (result === "You win!") {
-      playerScore++;
-    } else {
-      computerScore++;
-    }
-  }
-  if (playerScore > computerScore) {
-    console.log(`User win! ${playerScore} - ${computerScore}`);
-  } else {
-    console.log(`Computer win! ${playerScore} - ${computerScore}`);
-  }
+function play() {
+  btn = document.querySelectorAll(".btn");
+  btn.forEach(btn => btn.addEventListener("click", playRound));
 }
-game();
+game = document.querySelector(".game");
+game.addEventListener("click", () => location.reload());
+play();

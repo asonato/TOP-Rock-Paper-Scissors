@@ -1,0 +1,44 @@
+body {
+  background-image: radial-gradient(
+    circle,
+    #5d2171,
+    #814690,
+    #a66bb0,
+    #cb92d2,
+    #f1baf4
+  );
+  height: 100vh;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+img {
+  width: 100px;
+}
+
+.info {
+  text-align: center;
+  padding: 100px;
+}
+
+.selection {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.game {
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+.play-btn {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
